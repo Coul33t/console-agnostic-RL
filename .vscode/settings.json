@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "curses.h": "c",
+        "tchar.h": "c",
+        "stdlib.h": "c",
+        "display_lib.h": "c"
+    }
+}
