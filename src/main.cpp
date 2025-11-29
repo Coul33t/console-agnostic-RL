@@ -12,7 +12,7 @@ int main() {
     bool keep_going = true;
 
     while(keep_going) {
-        input = blocking_input();
+        //input = blocking_input();
 
         put_char(input, 0, 0);
     }
