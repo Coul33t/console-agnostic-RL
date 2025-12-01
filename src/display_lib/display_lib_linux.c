@@ -73,13 +73,13 @@ void colour_defaut() {
     attron(COLOR_PAIR(DEFAULT_COLOURS));
 }
 
-void change_colour(Colour colour, Plan plan) {
-    if (colour == Colour::DEFAULT) {
+void change_colour(enum Colour colour, enum Plan plan) {
+    if (colour == DEFAULT) {
         attron(COLOR_PAIR(DEFAULT_COLOURS));
     }
 
-    else if (colour == Colour::RED) {
-        if (plan == Plan::FORE) {
+    else if (colour == RED) {
+        if (plan == FORE) {
             attron(COLOR_PAIR(RED_BACKGROUND));
         } 
         
@@ -88,8 +88,8 @@ void change_colour(Colour colour, Plan plan) {
         }
     }
 
-    else if (colour == Colour::GREEN) {
-        if (plan == Plan::FORE) {
+    else if (colour == GREEN) {
+        if (plan == FORE) {
             attron(COLOR_PAIR(GREEN_BACKGROUND));
         } 
         
@@ -98,8 +98,8 @@ void change_colour(Colour colour, Plan plan) {
         }
     }
 
-    else if (colour == Colour::BLUE) {
-        if (plan == Plan::FORE) {
+    else if (colour == BLUE) {
+        if (plan == FORE) {
             attron(COLOR_PAIR(BLUE_BACKGROUND));
         } 
         
@@ -109,8 +109,8 @@ void change_colour(Colour colour, Plan plan) {
     }
 
     
-    else if (colour == Colour::YELLOW) {
-        if (plan == Plan::FORE) {
+    else if (colour == YELLOW) {
+        if (plan == FORE) {
             attron(COLOR_PAIR(YELLOW_BACKGROUND));
         } 
         

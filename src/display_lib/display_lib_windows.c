@@ -1,5 +1,10 @@
 #include "display_lib.h"
 
+VOID ErrorExit (LPSTR lpszMessage) {
+    fprintf(stderr, "%s\n", lpszMessage);
+    ExitProcess(0);
+}
+
 bool init_console() {
     // Set up the handles for reading/writing:
     w_con_w = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -8,11 +13,13 @@ bool init_console() {
     // https://learn.microsoft.com/en-us/windows/console/using-the-high-level-input-and-output-functions
     if (w_con_r == INVALID_HANDLE_VALUE || w_con_w == INVALID_HANDLE_VALUE) {
         MessageBox(NULL, TEXT("GetStdHandle"), TEXT("Console Error"), MB_OK);
-        return 1;
+        return false;
     }
+
+    return true;
 }
 
-void clear_console() {
+DWORD clear_console() {
     DWORD mode = 0;
 
     if (!GetConsoleMode(w_con_w, &mode)) {
@@ -33,18 +40,20 @@ void clear_console() {
     }
 
     SetConsoleMode(w_con_w, originalMode);
+
+    return 0;
 }
 
 void close_console() {
 
 }
 
-void non_blocking_input() {
-
+int non_blocking_input() {
+    return 0;
 }
 
 // https://learn.microsoft.com/en-us/windows/console/reading-input-buffer-events
-void blocking_input() {
+int blocking_input() {
     DWORD cNumRead, fdwSaveOldMode, fdwMode;
     INPUT_RECORD irInBuf[128];
     int counter = 0;
@@ -80,6 +89,7 @@ void blocking_input() {
             switch(irInBuf[i].EventType) {
                 case KEY_EVENT: // keyboard input
                     if(irInBuf[i].Event.KeyEvent.bKeyDown) {
+                        SetConsoleMode(w_con_r, fdwSaveOldMode);
                         return irInBuf[i].Event.KeyEvent.wVirtualKeyCode;
                     }
                     break;
@@ -109,6 +119,7 @@ void blocking_input() {
 
     SetConsoleMode(w_con_r, fdwSaveOldMode);
 
+    return 0;
 }
 
 void move_cursor(int x, int y) {
@@ -136,6 +147,6 @@ void default_colours() {
 
 }
 
-void change_colour(Colour colour, Plan plan) {
+void change_colour(enum Colour colour, enum Plan plan) {
     
 }

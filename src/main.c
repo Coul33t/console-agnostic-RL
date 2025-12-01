@@ -1,20 +1,22 @@
-#include "display_lib/display_lib.h"
+#include <stdio.h>
 
-#include <iostream>
+#include "display_lib/display_lib.h"
 
 int main() {
     if(!init_console()) {
-        std::cerr << "ERROR: can't open the console." << std::endl;
+        printf("ERROR: can't open the console.");
         return -1;
     }
 
     int input = ',';
     bool keep_going = true;
 
+    clear_console();
+
     while(keep_going) {
         //input = blocking_input();
 
-        put_char(input, 0, 0);
+        put_char('a', 0, 0);
     }
 
     return 0;
