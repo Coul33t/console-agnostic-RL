@@ -9,7 +9,7 @@ add_subdirectory(display_lib)
 
 
 if(MSVC)
-    target_compile_options(console_agnostic_rl PRIVATE /W4 /WX)
+    target_compile_options(console_agnostic_rl PRIVATE /W4)
 else()
     target_compile_options(console_agnostic_rl PRIVATE -Wall -Wextra -Wpedantic)
 endif()

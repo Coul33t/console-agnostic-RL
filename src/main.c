@@ -11,13 +11,19 @@ int main() {
     int input = ',';
     bool keep_going = true;
 
+    put_char('a', 10, 10);
+
     clear_console();
+
+    put_char('b', 10, 10);
 
     while(keep_going) {
         //input = blocking_input();
 
-        put_char('a', 0, 0);
+        put_char('c', 10, 10);
     }
+
+    printf("Wtf");
 
     return 0;
 }

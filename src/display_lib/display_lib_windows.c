@@ -128,7 +128,7 @@ void move_cursor(int x, int y) {
 
 void put_char(char chr, int x, int y) {
     COORD coords = {x, y};
-    LPDWORD* nb_chr_written;
+    LPDWORD* nb_chr_written = nullptr;
 
     WriteConsoleOutputCharacter(
     w_con_w, // handle to the console output

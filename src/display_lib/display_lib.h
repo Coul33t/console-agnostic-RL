@@ -15,6 +15,10 @@
     HANDLE w_con_r; // Handle to read from the console  
 
     VOID ErrorExit(LPSTR); 
+
+    #if _MSC_VER && !__INTEL_COMPILER
+        #define nullptr NULL
+    #endif
 #endif
 
 #ifdef __unix__
